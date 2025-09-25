@@ -6,7 +6,7 @@ The project is built **incrementally** with an engineering-first approach: small
 
 ---
 
-## ✨ Scope
+##  Scope
 
 - [x] **Ingestion**: backfill planner, WebSocket newHeads, bounded HTTP fetcher
 - [ ] **Transformation**: decode logs → ERC-20 transfers, ERC-721 transfers
@@ -17,7 +17,7 @@ The project is built **incrementally** with an engineering-first approach: small
 
 ---
 
-## 📊 Progress Tracker
+##  Progress Tracker
 
 - [x] Project skeleton (CLI + version)
 - [x] Architecture diagrams
@@ -34,7 +34,7 @@ The project is built **incrementally** with an engineering-first approach: small
 
 ---
 
-## 🗺️ System Architecture 
+##  System Architecture 
 
 ```mermaid
 flowchart TB
