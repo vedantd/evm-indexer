@@ -1,18 +1,23 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 
 	"github.com/vedantd/evm-indexer/internal/config"
+	"github.com/vedantd/evm-indexer/internal/logging"
 	"github.com/vedantd/evm-indexer/internal/version"
+
+	"github.com/rs/zerolog/log"
 )
 
 func main() {
-	fmt.Println("evm-indexer", version.Version)
+	logging.Init()
 
-	// Allow override via EVMI_CONFIG, default to configs/chains.yaml
+	log.Info().
+		Str("version", version.Version).
+		Msg("starting evm-indexer")
+
 	path := os.Getenv("EVMI_CONFIG")
 	if path == "" {
 		path = "internal/config/chains.yaml"
@@ -21,13 +26,24 @@ func main() {
 
 	cfg, err := config.LoadFromFile(path)
 	if err != nil {
-		fmt.Printf("config error: %v (path=%s)\n", err, abs)
-		os.Exit(1)
+		log.Fatal().
+			Err(err).
+			Str("path", abs).
+			Msg("failed to load config")
 	}
 
-	fmt.Printf("loaded %d chain(s) from %s\n", len(cfg.Chains), abs)
+	log.Info().
+		Int("chains", len(cfg.Chains)).
+		Str("path", abs).
+		Msg("loaded config")
+
 	for _, c := range cfg.Chains {
-		fmt.Printf("- %s (id=%d) start=%d batch=%d mode=%s\n",
-			c.Name, c.ChainID, c.StartBlock, c.BatchSize, c.ReceiptsMode)
+		log.Info().
+			Str("name", c.Name).
+			Uint64("id", c.ChainID).
+			Uint64("start", c.StartBlock).
+			Int("batch", c.BatchSize).
+			Str("mode", c.ReceiptsMode).
+			Msg("configured chain")
 	}
 }
