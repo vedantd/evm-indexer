@@ -1,0 +1,8 @@
+chains:
+  - name: ethereum
+    chain_id: 1
+    rpc_http: "https://mainnet.infura.io/v3/REPLACE_ME"
+    rpc_ws:   "wss://mainnet.infura.io/ws/v3/REPLACE_ME"
+    start_block: 18000000
+    batch_size: 100
+    receipts_mode: "generic"
