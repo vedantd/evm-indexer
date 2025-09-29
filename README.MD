@@ -1,6 +1,6 @@
 # EVM Indexer
 
-**Incremental Go-based EVM chain indexer** — ingests blocks and receipts, decodes ERC-20/721 events, handles reorgs, and serves balances/ownership APIs with observability (Prometheus, OpenTelemetry, structured logging).
+**Go-based EVM chain indexer** — ingests blocks and receipts, decodes ERC-20/721 events, handles reorgs, and serves balances/ownership APIs with observability (Prometheus, OpenTelemetry, structured logging).
 
 The project is built **incrementally** with an engineering-first approach: small commits, tested components, and extensibility in mind.
 
